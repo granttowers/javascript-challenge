@@ -4,9 +4,9 @@ var sightingData = data;
 var tbody = d3.select("tbody"); // This is the HTML table item
 
 // Append rows and cell per sighting report value (Date, City, State, Country, Shape, Duration and Comments)
-data.forEach(function (sightingData) {
+data.forEach(function (sighting) {
     var row = tbody.append("tr");
-    Object.entries(sightingData).forEach(function ([key, value]) {
+    Object.entries(sighting).forEach(function ([key, value]) {
         // Append a cell to the row for each value in the sighting data object
         var cell = row.append("td");
         cell.text(value);
@@ -35,16 +35,16 @@ function runEnter() {
     console.log(sightingData);
 
     // Cannot get the filter to work... getting and empty list back
-    var filteredData = sightingData.filter(date => sightingData.datetime === inputValue);
+    var filteredData = sightingData.filter(sightingData => sightingData.datetime === inputValue);
     console.log(filteredData)
 
     // Clear out all data in the tbody table - remove data from the table
     tbody.html("");
 
     // Append rows and cell per sighting report value (Date, City, State, Country, Shape, Duration and Comments)
-    data.forEach(function (filteredData) {
+    filteredData.forEach(function (sighting) {
         var row = tbody.append("tr");
-        Object.entries(filteredData).forEach(function ([key, value]) {
+        Object.entries(sighting).forEach(function ([key, value]) {
             // Append a cell to the row for each value in the sighting data object
             var cell = row.append("td");
             cell.text(value);
